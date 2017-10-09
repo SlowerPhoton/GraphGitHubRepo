@@ -1,5 +1,7 @@
 # GraphGitRepo
 
+*(This is no longer entirely true.)*
+
 Creates a map of a git repository. To achieve this there are two scripts available:
 
 * shell script `get_data_fom_git.sh`
