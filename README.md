@@ -32,6 +32,6 @@ And I enter the cloned repository. This is the main piece of code which also exp
 Right now both the scripts are configured for OpenSSL GitHub repo, but they can be easily modified. 
 
 (A cropped example for OpenSSL GitHub repo)
-<img src="https://i.imgur.com/MzKt92z.jpg" />
+<img src="https://i.imgur.com/ZxnnrTW.jpg" />
 
 You can find more examples in the `examples` directory.
