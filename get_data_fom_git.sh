@@ -17,15 +17,17 @@ fi
 echo fictional_file >> $OUTPUT_FILE
 
 
-git branch -r | sed '1d' | while read branch # for each branch
-do	
-	echo \$$branch >> $OUTPUT_FILE
-	git tag --merged $branch --sort=taggerdate | while read tag # for each tag
-	do
-		echo $tag\;\*\; >> $OUTPUT_FILE
-	
-	done
-done
+    git branch -r # a list of all branches in the repository 
+    | sed '1d' # changes 'origin/<branch name>' to '<branch name>' 
+    | while read BRANCH # for each branch
+    do	
+        echo \$$BRANCH >> $OUTPUT_FILE
+        git tag --merged $BRANCH --sort=creatordate # list all tags (releases) for a given branch sorted by time of creation 
+        | while read TAG # for each tag
+        do
+		        echo $TAG\;\*\; >> $OUTPUT_FILE
+        done
+    done
 
 if $REMOVE_OPENSSL
 then
