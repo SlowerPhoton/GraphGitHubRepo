@@ -17,17 +17,17 @@ At first I clone the OpenSSL repository if not present:
    
 And I enter the cloned repository. This is the main piece of code which also explains the format of the output file:
 
-    git branch -r # a list of all branches in the repository 
-    | sed '1d' # changes 'origin/<branch name>' to '<branch name>' 
-    | while read BRANCH # for each branch
-    do	
-        echo \$$BRANCH >> $OUTPUT_FILE
-        git tag --merged $BRANCH --sort=creatordate # list all tags (releases) for a given branch sorted by time of creation 
-        | while read TAG # for each tag
-        do
-		        echo $TAG\;\*\; >> $OUTPUT_FILE
-        done
-    done
+	git branch -r | # a list of all branches in the repository 
+	sed '1d' | # changes 'origin/<branch name>' to '<branch name>' 
+	while read BRANCH # for each branch
+	do	
+		echo \$$BRANCH >> $OUTPUT_FILE
+        	git tag --merged $BRANCH --sort=creatordate | # list all tags (releases) for a given branch sorted by time of creation 
+        	while read TAG # for each tag
+        	do
+			echo $TAG\;\*\; >> $OUTPUT_FILE
+		done
+	done
 
 Right now both the scripts are configured for OpenSSL GitHub repo, but they can be easily modified. 
 
